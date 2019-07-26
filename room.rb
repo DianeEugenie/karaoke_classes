@@ -56,4 +56,16 @@ class Room
     @bill += bartab
   end
 
+  def check_money()
+    total = 0
+
+    @guests.each { |guest| total += guest.wallet }
+
+    return total
+
+  end
+# name_lengths = chickens.map {|chicken| chicken.length()}
+#chickens.each { |chicken| name_lengths << chicken.length()}
+  #p numbers.reduce { |total, number| total + number }
+
 end

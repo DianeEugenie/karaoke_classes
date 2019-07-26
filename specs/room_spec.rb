@@ -129,19 +129,54 @@ class RoomTest < MiniTest::Test
   end
 
   def test_add_bar_total_to_bill()
+    #Arrange
     result = @bar.pay(@food)
+    #Act
     @room.add_to_bill(result)
+    #Assert
     assert_equal(5.00, @bar.total)
     assert_equal(5.00, @room.bill)
   end
 
   def test_add_bar_total_to_bill_and_one_guest()
+    #Arrange
     @room.check_in(@guest2) #6.50 for entry_fee
     result = @bar.pay(@food) #5.00 for food
+    #Act
     @room.add_to_bill(result)
+    #Assert
     assert_equal(5.00, @bar.total)
     assert_equal(11.50, @room.bill) #5.00 + 6.50
   end
+
+  def test_check_total_money_of_customers()
+    #Arrage - add customers cost = 13
+    @room.check_in(@guest)
+    @room.check_in(@guest2)
+    #Act
+    result = @room.check_money()
+    #Assert (45 - 13 = 32)
+    assert_equal(32.00, result)
+  end
+
+  # def test_total_bill_reached()
+  #   #Arrange
+  #   @room.check_in(@guest)
+  #   @room.check_in(@guest2) #13 in total
+  #   @bar.pay(@food)
+  #   @bar.pay(@food)
+  #   @bar.pay(@food)
+  #   @bar.pay(@food)
+  #   @bar.pay(@food)
+  #   @bar.pay(@food) #40 in total
+  #   @bar.pay(@drink)  #45.5
+  #   @room.add_to_bill(@bar.total) #30 in total
+  #   #Act
+  #
+  #   #Assert
+  #   assert_equal(43.00, @room.bill)#@room.pay(guests)
+  #
+  # end
 
   #maybe pay total bill and check if guests together have the money they need to pay for the bill - or that it will warn you if your money is about to run out??
 
