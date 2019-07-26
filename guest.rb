@@ -12,4 +12,8 @@ class Guest
     return @fav_song
   end
 
+  def pay(fee)
+    @wallet -= fee
+  end
+
 end

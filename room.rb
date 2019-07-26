@@ -33,4 +33,7 @@ class Room
     return @guests.count() == @capacity
   end
 
+
+
+
 end

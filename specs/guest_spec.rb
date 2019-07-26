@@ -16,16 +16,23 @@ class GuestTest < MiniTest::Test
     assert_equal("Thekla", @guest.name)
   end
 
-  def test_fav_song_name()
-    assert_equal("Hotline Bling", @guest.fav_song.name)
-  end
-
   def test_fav_song()
     assert_equal(@fav_song, @guest.fav_song)
   end
 
+  def test_fav_song_name()
+    assert_equal("Hotline Bling", @guest.fav_song.name)
+  end
+
   def test_guest_wallet()
     assert_equal(25.00, @guest.wallet)
+  end
+
+  def test_pay()
+    #Act
+    @guest.pay(5.00)
+    #Assert
+    assert_equal(20.00, @guest.wallet)
   end
 
 

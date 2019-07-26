@@ -11,9 +11,9 @@ class RoomTest < MiniTest::Test
     @song2 = Song.new("Bohemian Rhapsody", "Queen")
     @song3 = Song.new("Afscheid", "Volumia!")
 
-    @guest = Guest.new("Thekla", @song3)
-    @guest2 = Guest.new("Diane", @song2)
-    @guest3 = Guest.new("Martin", @song)
+    @guest = Guest.new("Thekla", @song3, 20.00)
+    @guest2 = Guest.new("Diane", @song2, 25.00)
+    @guest3 = Guest.new("Martin", @song, 40.00)
 
     @room = Room.new("Hufflepuff", 2)
 
