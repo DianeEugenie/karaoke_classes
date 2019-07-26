@@ -17,7 +17,7 @@ class Room
   end
 
   def check_in(guest)
-      @guests.push(guest)
+    @guests.push(guest) unless @guests.count() == @capacity
   end
 
   def check_out(guest)
@@ -26,7 +26,7 @@ class Room
 
   def add_song(song)
     @playlist.push(song)
-  end
+  end  
 
   def is_full?()
     return @guests.count() == @capacity
