@@ -21,10 +21,14 @@ class Room
   end
 
   def check_in(guest)
-    unless @guests.count() == @capacity
-      @guests.push(guest)
-      guest.pay(@entry_fee)
-      @bill += @entry_fee
+    if guest.wallet >= @entry_fee
+      unless @guests.count() == @capacity
+        @guests.push(guest)
+        guest.pay(@entry_fee)
+        @bill += @entry_fee
+      end
+    else
+      return "The entry fee is 6.50."
     end
   end
 
@@ -48,9 +52,8 @@ class Room
     end
   end
 
-  def add_to_bill(bar)
-    #binding.pry
-    @bill += bar
+  def add_to_bill(bartab)
+    @bill += bartab
   end
 
 

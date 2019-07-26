@@ -1,4 +1,4 @@
-class Bar
+class BarTab
 
   attr_reader :drink, :food, :total
 

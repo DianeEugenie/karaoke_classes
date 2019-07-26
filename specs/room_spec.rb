@@ -15,13 +15,14 @@ class RoomTest < MiniTest::Test
     @guest = Guest.new("Thekla", @song3, 20.00)
     @guest2 = Guest.new("Diane", @song2, 25.00)
     @guest3 = Guest.new("Martin", @song, 40.00)
+    @guest4 = Guest.new("Lala", @song2, 5.00)
 
     @room = Room.new("Hufflepuff", 2)
 
     @drink = 2.50
     @food = 5.00
 
-    @bar = Bar.new()
+    @bar = BarTab.new()
 
   end
 
@@ -42,6 +43,14 @@ class RoomTest < MiniTest::Test
     @room.check_in(@guest)
     #Assert
     assert_equal(1, @room.guest_count)
+  end
+
+  def test_check_in_guests__guest_poor()
+    #Act
+    result = @room.check_in(@guest4)
+    #Assert
+    assert_equal(0, @room.guest_count)
+    assert_equal("The entry fee is 6.50.", result)
   end
 
   def test_check_out_guests()
@@ -127,11 +136,11 @@ class RoomTest < MiniTest::Test
   end
 
   def test_add_bar_total_to_bill_and_one_guest()
-    @room.check_in(@guest2)
-    result = @bar.pay(@food)
+    @room.check_in(@guest2) #6.50 for entry_fee
+    result = @bar.pay(@food) #5.00 for food
     @room.add_to_bill(result)
     assert_equal(5.00, @bar.total)
-    assert_equal(11.50, @room.bill) #5.00 for food + 6.50 for entryfee
+    assert_equal(11.50, @room.bill) #5.00 + 6.50
   end
 
 

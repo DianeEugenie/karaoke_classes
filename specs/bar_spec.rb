@@ -2,26 +2,26 @@ require("minitest/autorun")
 require("minitest/rg")
 require_relative("../bar.rb")
 
-class BarTest < MiniTest::Test
+class BarTabTest < MiniTest::Test
 
   def setup()
 
     @drink = 2.50
     @food = 5.00
-    
-    @bar = Bar.new()
+
+    @bar_tab = BarTab.new()
   end
 
   def test_drink_price()
-    assert_equal(2.50, @bar.drink)
+    assert_equal(2.50, @bar_tab.drink)
   end
 
   def test_food_price()
-    assert_equal(5.00, @bar.food)
+    assert_equal(5.00, @bar_tab.food)
   end
 
   def test_add_to_total()
-    @bar.pay(@food)
-    assert_equal(5.00, @bar.total)
+    @bar_tab.pay(@food)
+    assert_equal(5.00, @bar_tab.total)
   end
 end
