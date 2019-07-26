@@ -1,12 +1,14 @@
 require("minitest/autorun")
 require("minitest/rg")
 require_relative("../guest.rb")
+require_relative("../song.rb")
 
 class GuestTest < MiniTest::Test
 
   def setup()
 
-    @guest = Guest.new("Thekla", "Hotline Bling")
+    @song = Song.new("Hotline Bling", "Drake" )
+    @guest = Guest.new("Thekla", @song)
 
   end
 
@@ -15,7 +17,7 @@ class GuestTest < MiniTest::Test
   end
 
   def test_fav_song_name()
-    assert_equal("Hotline Bling", @guest.fav_song)
+    assert_equal("Hotline Bling", @song.name)
   end
 
 
