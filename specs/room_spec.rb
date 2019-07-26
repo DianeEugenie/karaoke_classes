@@ -3,6 +3,7 @@ require("minitest/rg")
 require_relative("../room.rb")
 require_relative("../song.rb")
 require_relative("../guest.rb")
+require_relative("../bar.rb")
 
 class RoomTest < MiniTest::Test
 
@@ -16,6 +17,11 @@ class RoomTest < MiniTest::Test
     @guest3 = Guest.new("Martin", @song, 40.00)
 
     @room = Room.new("Hufflepuff", 2)
+
+    @drink = 2.50
+    @food = 5.00
+
+    @bar = Bar.new()
 
   end
 
@@ -111,6 +117,21 @@ class RoomTest < MiniTest::Test
     result = @room.check_playlist(@guest2)
     #Assert
     assert_equal("Awh.. #{@guest2.fav_song.name} is not on the playlist!", result)
+  end
+
+  def test_add_bar_total_to_bill()
+    result = @bar.pay(@food)
+    @room.add_to_bill(result)
+    assert_equal(5.00, @bar.total)
+    assert_equal(5.00, @room.bill)
+  end
+
+  def test_add_bar_total_to_bill_and_one_guest()
+    @room.check_in(@guest2)
+    result = @bar.pay(@food)
+    @room.add_to_bill(result)
+    assert_equal(5.00, @bar.total)
+    assert_equal(11.50, @room.bill) #5.00 for food + 6.50 for entryfee
   end
 
 

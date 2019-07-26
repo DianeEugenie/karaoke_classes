@@ -1,3 +1,5 @@
+require("pry")
+
 class Room
   attr_reader :name, :capacity, :entry_fee, :bill
 
@@ -7,7 +9,7 @@ class Room
     @guests = []
     @capacity = capacity
     @entry_fee = 6.50
-    @bill = 0
+    @bill = 0.00
   end
 
   def song_count()
@@ -45,6 +47,12 @@ class Room
       return "Awh.. #{guest.fav_song.name} is not on the playlist!"
     end
   end
+
+  def add_to_bill(bar)
+    #binding.pry
+    @bill += bar
+  end
+
 
 
 
