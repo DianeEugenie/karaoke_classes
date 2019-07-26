@@ -12,15 +12,22 @@ class RoomTest < MiniTest::Test
     @song3 = Song.new("Afscheid", "Volumia!")
 
     @room = Room.new("Hufflepuff")
-    @songs = []
+
   end
 
   def test_room_name()
     assert_equal("Hufflepuff", @room.name)
   end
 
-  def test_no_songs()
-    assert_equal(0, @songs.count)
+  def test_songs_in_playlist()
+    assert_equal(0, @room.song_count)
+  end
+
+  def test_add_song_to_playlist()
+    #Act
+    @room.add_song(@song)
+    #Assert
+    assert_equal(1, @room.song_count)
   end
 
 

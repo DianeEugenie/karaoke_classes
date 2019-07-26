@@ -1,10 +1,17 @@
 class Room
   attr_reader :name
-  attr_accessor :songs
 
   def initialize(name)
     @name = name
-    @songs = []
+    @playlist = []
+  end
+
+  def song_count()
+    return @playlist.count()
+  end
+
+  def add_song(song)
+    @playlist.push(song)
   end
 
 
