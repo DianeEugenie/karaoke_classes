@@ -17,7 +17,7 @@ class GuestTest < MiniTest::Test
   end
 
   def test_fav_song_name()
-    assert_equal("Hotline Bling", @fav_song.name)
+    assert_equal("Hotline Bling", @guest.fav_song.name)
   end
 
   def test_fav_song()
