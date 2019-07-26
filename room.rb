@@ -38,6 +38,14 @@ class Room
     return @guests.count() == @capacity
   end
 
+  def check_playlist(guest)
+    if @playlist.include?(guest.fav_song)
+      return "That's MY JAM!"
+    else
+      return "Awh.. #{guest.fav_song.name} is not on the playlist!"
+    end
+  end
+
 
 
 

@@ -88,12 +88,30 @@ class RoomTest < MiniTest::Test
   def test_guest_entry_fee_added_to_till()
     #Arrange
     @room.check_in(@guest)
-    #Asser
+    #Assert
     assert_equal(6.50, @room.till)
     assert_equal(13.50, @guest.wallet)
   end
 
+  def test_guest_check_song_on_playlist__true()
+    #Arrange
+    @room.check_in(@guest3)
+    @room.add_song(@song)
+    #Act
+    result = @room.check_playlist(@guest3)
+    #Assert
+    assert_equal("That's MY JAM!", result)
+  end
 
+  def test_guest_check_song_on_playlist__false()
+    #Arrange
+    @room.check_in(@guest2)
+    @room.add_song(@song)
+    #Act
+    result = @room.check_playlist(@guest2)
+    #Assert
+    assert_equal("Awh.. #{@guest2.fav_song.name} is not on the playlist!", result)
+  end
 
 
 
