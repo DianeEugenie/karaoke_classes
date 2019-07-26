@@ -2,7 +2,7 @@ require("minitest/autorun")
 require("minitest/rg")
 require_relative("../room.rb")
 require_relative("../song.rb")
-
+require_relative("../guest.rb")
 
 class RoomTest < MiniTest::Test
 
@@ -10,6 +10,8 @@ class RoomTest < MiniTest::Test
     @song = Song.new("Simply The Best", "Tina Turner")
     @song2 = Song.new("Bohemian Rhapsody", "Queen")
     @song3 = Song.new("Afscheid", "Volumia!")
+
+    @guest = Guest.new("Thekla", @song3)
 
     @room = Room.new("Hufflepuff")
 
@@ -22,6 +24,19 @@ class RoomTest < MiniTest::Test
   def test_songs_in_playlist()
     assert_equal(0, @room.song_count)
   end
+
+  def test_room_is_empty()
+    assert_equal(0, @room.guest_count)
+  end
+
+  # def test_check_in_guests()
+  #   #Act
+  #   @room.check_in(@guest)
+  #   #Assert
+  #   assert_equal(1, @room.guest_count)
+  # end
+
+
 
   def test_add_song_to_playlist()
     #Act

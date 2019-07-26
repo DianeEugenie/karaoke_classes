@@ -4,10 +4,15 @@ class Room
   def initialize(name)
     @name = name
     @playlist = []
+    @guests = []
   end
 
   def song_count()
     return @playlist.count()
+  end
+
+  def guest_count()
+    return @guests.count()
   end
 
   def add_song(song)
