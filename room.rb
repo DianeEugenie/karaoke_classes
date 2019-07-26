@@ -27,6 +27,8 @@ class Room
         @guests.push(guest)
         guest.pay(@entry_fee)
         @bill += @entry_fee
+      else
+        return "Would you like to move to a bigger room?"
       end
     else
       return "The entry fee is 6.50."
