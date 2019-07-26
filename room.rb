@@ -15,6 +15,10 @@ class Room
     return @guests.count()
   end
 
+  def check_in(guest)
+    @guests.push(guest)
+  end
+  
   def add_song(song)
     @playlist.push(song)
   end
