@@ -80,6 +80,10 @@ class RoomTest < MiniTest::Test
     assert_equal(2, @room.guest_count)
   end
 
+  def test_room_has_entry_fee()
+    assert_equal(6.50, @room.entry_fee)
+  end
+
 
 
 

@@ -1,11 +1,12 @@
 class Room
-  attr_reader :name, :capacity
+  attr_reader :name, :capacity, :entry_fee
 
   def initialize(name, capacity)
     @name = name
     @playlist = []
     @guests = []
     @capacity = capacity
+    @entry_fee = 6.50
   end
 
   def song_count()
@@ -26,7 +27,7 @@ class Room
 
   def add_song(song)
     @playlist.push(song)
-  end  
+  end
 
   def is_full?()
     return @guests.count() == @capacity
