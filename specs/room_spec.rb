@@ -78,7 +78,7 @@ class RoomTest < MiniTest::Test
     @room.check_in(@guest3)
     #Assert
     assert_equal(2, @room.guest_count)
-    assert_equal(13.00, @room.till)
+    assert_equal(13.00, @room.bill)
   end
 
   def test_room_has_entry_fee()
@@ -89,7 +89,7 @@ class RoomTest < MiniTest::Test
     #Arrange
     @room.check_in(@guest)
     #Assert
-    assert_equal(6.50, @room.till)
+    assert_equal(6.50, @room.bill)
     assert_equal(13.50, @guest.wallet)
   end
 

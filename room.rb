@@ -1,5 +1,5 @@
 class Room
-  attr_reader :name, :capacity, :entry_fee, :till
+  attr_reader :name, :capacity, :entry_fee, :bill
 
   def initialize(name, capacity)
     @name = name
@@ -7,7 +7,7 @@ class Room
     @guests = []
     @capacity = capacity
     @entry_fee = 6.50
-    @till = 0
+    @bill = 0
   end
 
   def song_count()
@@ -22,7 +22,7 @@ class Room
     unless @guests.count() == @capacity
       @guests.push(guest)
       guest.pay(@entry_fee)
-      @till += @entry_fee
+      @bill += @entry_fee
     end
   end
 
