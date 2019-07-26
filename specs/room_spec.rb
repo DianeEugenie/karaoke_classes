@@ -157,26 +157,12 @@ class RoomTest < MiniTest::Test
     result = @room.check_money()
     #Assert (45 - 13 = 32)
     assert_equal(32.00, result)
+    assert_equal(32.00, @room.max_tab)
   end
 
-  # def test_total_bill_reached()
-  #   #Arrange
-  #   @room.check_in(@guest)
-  #   @room.check_in(@guest2) #13 in total
-  #   @bar.pay(@food)
-  #   @bar.pay(@food)
-  #   @bar.pay(@food)
-  #   @bar.pay(@food)
-  #   @bar.pay(@food)
-  #   @bar.pay(@food) #40 in total
-  #   @bar.pay(@drink)  #45.5
-  #   @room.add_to_bill(@bar.total) #30 in total
-  #   #Act
-  #
-  #   #Assert
-  #   assert_equal(43.00, @room.bill)#@room.pay(guests)
-  #
-  # end
+
+
+
 
   #maybe pay total bill and check if guests together have the money they need to pay for the bill - or that it will warn you if your money is about to run out??
 

@@ -1,7 +1,7 @@
 require("pry")
 
 class Room
-  attr_reader :name, :capacity, :entry_fee, :bill
+  attr_reader :name, :capacity, :entry_fee, :bill, :max_tab
 
   def initialize(name, capacity)
     @name = name
@@ -10,6 +10,7 @@ class Room
     @capacity = capacity
     @entry_fee = 6.50
     @bill = 0.00
+    @max_tab = 0
   end
 
   def song_count()
@@ -61,9 +62,13 @@ class Room
 
     @guests.each { |guest| total += guest.wallet }
 
-    return total
+    @max_tab += total
 
   end
+
+
+
+
 # name_lengths = chickens.map {|chicken| chicken.length()}
 #chickens.each { |chicken| name_lengths << chicken.length()}
   #p numbers.reduce { |total, number| total + number }
