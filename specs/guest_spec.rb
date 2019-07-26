@@ -7,8 +7,8 @@ class GuestTest < MiniTest::Test
 
   def setup()
 
-    @song = Song.new("Hotline Bling", "Drake" )
-    @guest = Guest.new("Thekla", @song)
+    @fav_song = Song.new("Hotline Bling", "Drake" )
+    @guest = Guest.new("Thekla", @fav_song)
 
   end
 
@@ -17,7 +17,7 @@ class GuestTest < MiniTest::Test
   end
 
   def test_fav_song_name()
-    assert_equal("Hotline Bling", @song.name)
+    assert_equal("Hotline Bling", @fav_song.name)
   end
 
 
