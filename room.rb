@@ -22,7 +22,7 @@ class Room
 
   def check_in(guest)
     if guest.wallet >= @entry_fee
-      unless @guests.count() == @capacity
+      unless is_full?()
         @guests.push(guest)
         guest.pay(@entry_fee)
         @bill += @entry_fee
@@ -46,7 +46,7 @@ class Room
 
   def check_playlist(guest)
     if @playlist.include?(guest.fav_song)
-      return "That's MY JAM!"
+      return "OMG! They have #{guest.fav_song.name}. That's MY JAM!"
     else
       return "Awh.. #{guest.fav_song.name} is not on the playlist!"
     end
@@ -55,11 +55,5 @@ class Room
   def add_to_bill(bartab)
     @bill += bartab
   end
-
-
-
-
-
-
 
 end

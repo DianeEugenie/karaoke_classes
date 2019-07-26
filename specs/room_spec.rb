@@ -115,7 +115,7 @@ class RoomTest < MiniTest::Test
     #Act
     result = @room.check_playlist(@guest3)
     #Assert
-    assert_equal("That's MY JAM!", result)
+    assert_equal("OMG! They have Simply The Best. That's MY JAM!", result)
   end
 
   def test_guest_check_song_on_playlist__false()
@@ -142,6 +142,14 @@ class RoomTest < MiniTest::Test
     assert_equal(5.00, @bar.total)
     assert_equal(11.50, @room.bill) #5.00 + 6.50
   end
+
+  #maybe pay total bill and check if guests together have the money they need to pay for the bill - or that it will warn you if your money is about to run out??
+
+  #add a play song function and guest be all woohoo that the song is there?
+
+  #add function that if you check into a room and it's full that you can go into another room that still has space?
+
+  #try a file maybe like the snowman to run a Karaoke scenario???
 
 
 
