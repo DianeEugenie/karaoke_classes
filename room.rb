@@ -59,18 +59,20 @@ class Room
 
   def check_money()
     total = 0
+    @guests.each{ |guest| total += guest.wallet}
 
-    @guests.each { |guest| total += guest.wallet }
-
-    @max_tab += total
-
+    return total
   end
 
+  def play_song(song)
+    return "Now playing... #{song.name} by #{song.singer}."
+  end
 
+  def remove_song(song)
+    @playlist.delete(song)
 
+    return "You have just deleted #{song.name} by #{song.singer}."
+  end
 
-# name_lengths = chickens.map {|chicken| chicken.length()}
-#chickens.each { |chicken| name_lengths << chicken.length()}
-  #p numbers.reduce { |total, number| total + number }
 
 end

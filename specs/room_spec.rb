@@ -149,6 +149,7 @@ class RoomTest < MiniTest::Test
     assert_equal(11.50, @room.bill) #5.00 + 6.50
   end
 
+#I was intending to set a max_tab for the customers so they couldn't go above it but I couldn't make it work - possibly had to do something in bar itself?
   def test_check_total_money_of_customers()
     #Arrage - add customers cost = 13
     @room.check_in(@guest)
@@ -157,8 +158,30 @@ class RoomTest < MiniTest::Test
     result = @room.check_money()
     #Assert (45 - 13 = 32)
     assert_equal(32.00, result)
-    assert_equal(32.00, @room.max_tab)
   end
+
+  def test_play_song()
+    #Arrange
+    @room.add_song(@song2)
+    #Act
+    result = @room.play_song(@song2)
+    #Assert
+    assert_equal("Now playing... #{@song2.name} by #{@song2.singer}.", result)
+  end
+
+  def test_remove_song()
+    #Arrange
+    @room.add_song(@song2)
+    #Act
+    @room.remove_song(@song2)
+    #Assert
+    assert_equal(0, @room.song_count)
+    assert_equal("You have just deleted Bohemian Rhapsody by Queen.", @room.remove_song(@song2))
+  end
+
+
+
+
 
 
 
