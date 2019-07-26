@@ -19,10 +19,11 @@ class Room
   end
 
   def check_in(guest)
-    @guests.push(guest) unless @guests.count() == @capacity
-
-    guest.pay(@entry_fee)
-    @till += @entry_fee
+    unless @guests.count() == @capacity
+      @guests.push(guest)
+      guest.pay(@entry_fee)
+      @till += @entry_fee
+    end
   end
 
   def check_out(guest)
