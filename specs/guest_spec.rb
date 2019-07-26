@@ -20,9 +20,12 @@ class GuestTest < MiniTest::Test
     assert_equal("Hotline Bling", @fav_song.name)
   end
 
+  def test_fav_song()
+    assert_equal(@fav_song, @guest.fav_song)
+  end
+
   def test_guest_wallet()
     assert_equal(25.00, @guest.wallet)
-
   end
 
 

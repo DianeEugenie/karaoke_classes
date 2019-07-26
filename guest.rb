@@ -8,5 +8,8 @@ class Guest
     @wallet = wallet
   end
 
+  def fav_song()
+    return @fav_song
+  end
 
 end
