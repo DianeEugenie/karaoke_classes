@@ -18,7 +18,11 @@ class Room
   def check_in(guest)
     @guests.push(guest)
   end
-  
+
+  def check_out(guest)
+    @guests.delete(guest)
+  end
+
   def add_song(song)
     @playlist.push(song)
   end
