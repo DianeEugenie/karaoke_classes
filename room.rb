@@ -74,5 +74,9 @@ class Room
     return "You have just deleted #{song.name} by #{song.singer}."
   end
 
+  def closing_time()
+    @guests.clear()
+  end
+
 
 end

@@ -179,21 +179,16 @@ class RoomTest < MiniTest::Test
     assert_equal("You have just deleted Bohemian Rhapsody by Queen.", @room.remove_song(@song2))
   end
 
-
-
-
-
-
-
-
-
-  #maybe pay total bill and check if guests together have the money they need to pay for the bill - or that it will warn you if your money is about to run out??
-
-  #add a play song function and guest be all woohoo that the song is there?
-
   #add function that if you check into a room and it's full that you can go into another room that still has space?
-
-  #try a file maybe like the snowman to run a Karaoke scenario???
+  def test_closing_time()
+    #Arrange
+    @room.check_in(@guest2)
+    @room.check_in(@guest3)
+    #Act
+    @room.closing_time()
+    #Assert
+    assert_equal(0, @room.guest_count)
+  end
 
 
 
