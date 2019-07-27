@@ -1,7 +1,7 @@
 require("pry")
 
 class Room
-  attr_reader :name, :capacity, :entry_fee, :bill, :max_tab
+  attr_reader :name, :capacity, :entry_fee, :bill, :max_tab, :playlist
 
   def initialize(name, capacity)
     @name = name
@@ -80,5 +80,8 @@ class Room
     @guests.clear()
   end
 
+  def move_song_to_front(song)
+    @playlist[0] = song
+  end
 
 end

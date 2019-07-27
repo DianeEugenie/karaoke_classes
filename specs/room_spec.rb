@@ -19,10 +19,7 @@ class RoomTest < MiniTest::Test
 
     @room = Room.new("Hufflepuff", 2)
 
-    @drink = 2.50
-    @food = 5.00
-
-    @bar = BarTab.new()
+    @bar = BarTab.new(2.50, 5.00)
 
   end
 
@@ -131,7 +128,7 @@ class RoomTest < MiniTest::Test
 
   def test_add_bar_total_to_bill()
     #Arrange
-    result = @bar.pay(@food)
+    result = @bar.pay(5.00)
     #Act
     @room.add_to_bill(result)
     #Assert
@@ -142,7 +139,7 @@ class RoomTest < MiniTest::Test
   def test_add_bar_total_to_bill_and_one_guest()
     #Arrange
     @room.check_in(@guest2) #6.50 for entry_fee
-    result = @bar.pay(@food) #5.00 for food
+    result = @bar.pay(5.00) #5.00 for food
     #Act
     @room.add_to_bill(result)
     #Assert
@@ -180,7 +177,6 @@ class RoomTest < MiniTest::Test
     assert_equal("You have just deleted Bohemian Rhapsody by Queen.", @room.remove_song(@song2))
   end
 
-  #add function that if you check into a room and it's full that you can go into another room that still has space?
   def test_closing_time()
     #Arrange
     @room.check_in(@guest2)
@@ -189,6 +185,18 @@ class RoomTest < MiniTest::Test
     @room.closing_time()
     #Assert
     assert_equal(0, @room.guest_count)
+  end
+
+  def test_add_song_to_front_of_playlist()
+    #Arrange
+    @room.add_song(@song)
+    @room.add_song(@song2)
+    @room.add_song(@song3)
+    #Act
+    @room.move_song_to_front(@song3)
+    #Assert
+    assert_equal(@song3, @room.playlist[0])
+    assert_equal(3, @room.song_count)
   end
 
 
