@@ -84,4 +84,13 @@ class Room
     @playlist[0] = song
   end
 
+  def switch_song_position(song1, song2)
+    #get the indexes of both songs
+    song1_position = @playlist.index(song1)
+    song2_position = @playlist.index(song2)
+    #move the songs to each other's position
+    @playlist[song1_position] = song2
+    @playlist[song2_position] = song1
+  end
+
 end

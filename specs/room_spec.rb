@@ -187,7 +187,7 @@ class RoomTest < MiniTest::Test
     assert_equal(0, @room.guest_count)
   end
 
-  def test_add_song_to_front_of_playlist()
+  def test_add_existing_song_to_front_of_playlist()
     #Arrange
     @room.add_song(@song)
     @room.add_song(@song2)
@@ -197,6 +197,18 @@ class RoomTest < MiniTest::Test
     #Assert
     assert_equal(@song3, @room.playlist[0])
     assert_equal(3, @room.song_count)
+  end
+
+  def test_move_song_to_position_of_other_song()
+    #Arrange
+    @room.add_song(@song)
+    @room.add_song(@song2)
+    @room.add_song(@song3)
+    #Act
+    @room.switch_song_position(@song2, @song)
+    #Assert
+    assert_equal(@song2, @room.playlist[0])
+    assert_equal(@song, @room.playlist[1])
   end
 
 
