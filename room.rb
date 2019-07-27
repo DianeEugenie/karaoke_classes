@@ -93,8 +93,10 @@ class Room
       #move the songs to each other's position
       @playlist[song1_position] = song2
       @playlist[song2_position] = song1
+    elsif (@playlist.include?(song1) == false)
+      return "#{song1.name} is not in the playlist."
     else
-      return "Either one or both of the songs does not exist"
+      return "#{song2.name} is not in the playlist."
     end
   end
 

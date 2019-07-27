@@ -219,7 +219,7 @@ class RoomTest < MiniTest::Test
     result = @room.switch_song_position(@song2, @song)
     #Assert
     assert_equal(@song, @room.playlist[0])
-    assert_equal("Either one or both of the songs does not exist", result)
+    assert_equal("#{@song2.name} is not in the playlist.", result)
   end
 
 
