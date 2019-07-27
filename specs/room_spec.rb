@@ -211,5 +211,16 @@ class RoomTest < MiniTest::Test
     assert_equal(@song, @room.playlist[1])
   end
 
+  def test_move_song_to_position_of_other_song__unadded_song()
+    #Arrange
+    @room.add_song(@song)
+    @room.add_song(@song3)
+    #Act
+    result = @room.switch_song_position(@song2, @song)
+    #Assert
+    assert_equal(@song, @room.playlist[0])
+    assert_equal("Either one or both of the songs does not exist", result)
+  end
+
 
 end
