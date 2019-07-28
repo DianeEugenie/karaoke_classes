@@ -98,6 +98,7 @@ class Room
     else
       return "#{song2.name} is not in the playlist."
     end
+
   end
 
 end
